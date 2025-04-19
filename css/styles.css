@@ -121,10 +121,9 @@ body{
 /* ----------  MAIN CONTENT  ---------- */
 main{
   background:var(--peach-bg);
-  max-width:92%;
-  margin:0 auto;
+  margin:0 20px;
   flex:1;
-  padding:6rem 2rem 2rem;
+  padding:6rem 10px 2rem;
   text-align:left;
 }
 h1{
@@ -167,10 +166,14 @@ footer{
     flex-direction:column;
     padding:2rem;
     gap:2rem;
-    align-items: flex-start; /* Align menu entries to the left */
+    align-items: flex-start;
   }
   .main-nav ul li:nth-child(1){padding-top:50px}
   .main-nav ul li:nth-child(2){margin-right:0}
-  .main-nav ul li:nth-child(3){padding-left:0} /* Remove left padding for 'Anlage' */
+  .main-nav ul li:nth-child(3){padding-left:0}
   .main-nav a{font-size:1.5rem}
+}
+
+.container{
+  padding:10px;
 }

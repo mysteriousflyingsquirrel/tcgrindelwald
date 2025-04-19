@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Club - TC Grindelwald</title>
+  <title>Kalender - TC Grindelwald</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -39,8 +39,8 @@
     </header>
     <main>
       <div class="container">
-        <h1 id="main-title">Club</h1>
-        <p id="main-paragraph-1">Erfahren Sie mehr über unseren Club.</p>
+        <h1 id="main-title">Kalender</h1>
+        <p id="main-paragraph-1">Hier finden Sie unseren Veranstaltungskalender.</p>
       </div>
     </main>
     <footer>
@@ -59,22 +59,21 @@
     const translations = {
       de: {
         menu: ["Kalender", "Club", "Anlage", "Kontakt"],
-        title: "CLUB",
+        title: "KALENDER",
         paragraphs: [
-          "Erfahren Sie mehr über unseren Club."
+          "Dies ist ein Text."
         ]
       },
       en: {
         menu: ["Calendar", "Club", "Facility", "Contact"],
-        title: "CLUB",
-        paragraphs: ["Learn more about our club."
+        title: "CALENDAR",
+        paragraphs: ["This is a text."
         ]
       }
     };
 
     function switchLanguage(lang, event) {
       if (event) event.preventDefault(); // Prevent default link behavior
-      localStorage.setItem('language', lang); // Save selected language
       const menuItems = document.querySelectorAll(".main-nav ul li a");
       const content = translations[lang];
       menuItems.forEach((item, index) => {

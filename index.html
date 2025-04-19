@@ -22,17 +22,17 @@
       <!-- NAV list -->
       <nav class="main-nav">
         <ul>
-          <li><a href="#">Kalender</a></li>
-          <li><a href="#">Club</a></li>
-          <li><a href="#">Anlage</a></li>
-          <li><a href="#">Kontakt</a></li>
+          <li><a href="kalender.html">Kalender</a></li>
+          <li><a href="club.html">Club</a></li>
+          <li><a href="anlage.html">Anlage</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
         </ul>
       </nav>
 
       <!-- Language switch (always at right) -->
       <div class="lang-switch">
-        <a href="#">DE</a>
-        <a href="#">EN</a>
+        <a href="#" onclick="switchLanguage('de', event)">DE</a>
+        <a href="#" onclick="switchLanguage('en', event)">EN</a>
       </div>
 
       <!-- centred logo -->
@@ -44,15 +44,10 @@
 
     <!-- === MAIN CONTENT === -->
     <main>
-      <h1>ÜBER UNS</h1>
-      <p>Wir schreiben das Jahr 1915, als der Tennisclub Grindelwald, damals unter dem Namen Baer Lawn-Tennisclub Grindelwald, 
-        am 26. September unter dem Präsidium von Herrn Chr. Burgener gegründet wurde.</p>
-        <p>
-            Wir schreiben das Jahr 1915, als der Tennisclub Grindelwald, damals unter dem Namen Baer Lawn-Tennisclub Grindelwald, am 26. September unter dem Präsidium von Herrn Chr. Burgener gegründet wurde.
-            Heute zählt der TC Grindelwald 119 Mitglieder.
-            Unsere Tennisanlage, inmitten der Bergwelt von Grindelwald, bietet vier Sandplätze und ein Clubhaus mit Bistro für ein gemütliches Klubleben.
-        </p>
-        <p>Ob Jung oder Alt, Plausch oder Wettkampf, in unseren Aktivitäten findet jeder die Möglichkeit, seinen Spass am Tennissport auszuleben.</p>
+      <div class="container">
+        <h1 id="main-title"></h1>
+        <p id="main-paragraph-1"></p>
+      </div>
     </main>
 
     <!-- === FOOTER === -->
@@ -69,6 +64,40 @@
     burger.addEventListener('click', () => {
       burger.classList.toggle('open');
       mainNav.classList.toggle('open');
+    });
+
+    const translations = {
+      de: {
+        menu: ["Kalender", "Club", "Anlage", "Kontakt"],
+        title: "WILLKOMMEN",
+        paragraphs: [
+          "Dies ist ein Text."
+        ]
+      },
+      en: {
+        menu: ["Calendar", "Club", "Facility", "Contact"],
+        title: "WELCOME",
+        paragraphs: ["This is a text."
+        ]
+      }
+    };
+
+    function switchLanguage(lang, event) {
+      if (event) event.preventDefault(); // Prevent default link behavior
+      localStorage.setItem('language', lang); // Save selected language
+      const menuItems = document.querySelectorAll(".main-nav ul li a");
+      const content = translations[lang];
+      menuItems.forEach((item, index) => {
+        item.textContent = content.menu[index];
+      });
+      document.getElementById("main-title").textContent = content.title;
+      document.getElementById("main-paragraph-1").textContent = content.paragraphs[0];
+    }
+
+    // Apply saved language or default to DE on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLanguage = localStorage.getItem('language') || 'de';
+      switchLanguage(savedLanguage);
     });
   </script>
 </body>

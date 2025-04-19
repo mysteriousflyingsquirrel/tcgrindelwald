@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontakt - TC Grindelwald</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <header class="top-bar">
+
+      <!-- Hamburger (mobile only) -->
+      <button class="burger" aria-label="Menü öffnen / schließen">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- NAV list -->
+      <nav class="main-nav">
+        <ul>
+          <li><a href="kalender.html">Kalender</a></li>
+          <li><a href="club.html">Club</a></li>
+          <li><a href="anlage.html">Anlage</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <!-- Language switch (always at right) -->
+      <div class="lang-switch">
+        <a href="#" onclick="switchLanguage('de', event)">DE</a>
+        <a href="#" onclick="switchLanguage('en', event)">EN</a>
+      </div>
+
+      <!-- centred logo -->
+      <a href="index.html" class="logo">
+        <img src="icons/logo.png" alt="Tennisclub Grindelwald Logo" />
+      </a>
+
+    </header>
+    <main>
+      <div class="container">
+        <h1 id="main-title">Kontakt</h1>
+        <p id="main-paragraph-1">Kontaktieren Sie uns für weitere Informationen.</p>
+      </div>
+    </main>
+    <footer>
+      © 2025 TC Grindelwald
+    </footer>
+  </div>
+  <script>
+    /* simple hamburger toggle */
+    const burger   = document.querySelector('.burger');
+    const mainNav  = document.querySelector('.main-nav');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      mainNav.classList.toggle('open');
+    });
+
+    const translations = {
+      de: {
+        menu: ["Kalender", "Club", "Anlage", "Kontakt"],
+        title: "KONTAKT",
+        paragraphs: [
+          "Kontaktieren Sie uns für weitere Informationen."
+        ]
+      },
+      en: {
+        menu: ["Calendar", "Club", "Facility", "Contact"],
+        title: "CONTACT",
+        paragraphs: ["Contact us for more information."
+        ]
+      }
+    };
+
+    function switchLanguage(lang, event) {
+      if (event) event.preventDefault(); // Prevent default link behavior
+      localStorage.setItem('language', lang); // Save selected language
+      const menuItems = document.querySelectorAll(".main-nav ul li a");
+      const content = translations[lang];
+      menuItems.forEach((item, index) => {
+        item.textContent = content.menu[index];
+      });
+      document.getElementById("main-title").textContent = content.title;
+      document.getElementById("main-paragraph-1").textContent = content.paragraphs[0];
+    }
+
+    // Apply saved language or default to DE on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLanguage = localStorage.getItem('language') || 'de';
+      switchLanguage(savedLanguage);
+    });
+  </script>
+</body>
+</html>
