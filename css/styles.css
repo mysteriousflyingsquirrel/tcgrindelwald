@@ -1,7 +1,7 @@
 /* ----------  COLOR PALETTE  ---------- */
 :root{
   --orange-nav:#d8871e;
-  --red-frame:#C61824;     /* outer frame */
+  --red-frame:#C61824;
   --peach-bg:#f8d9c7;
   --green-text:#00786e;
   --white:#ffffff;
@@ -13,7 +13,6 @@
 
 /* >>> CUSTOM CURSOR FOR THE WHOLE PAGE <<< */
 html{
-  /* 16 16 = Hotspot (x,y) in Pixeln – ggf. anpassen */
   cursor:url("../icons/tennis.png") 16 16, auto;
 }
 
@@ -100,8 +99,12 @@ body{
   gap:6px;
   background:none;
   border:none;
-  cursor:pointer;            /* ball‑cursor greift hier durch   */
+  cursor:pointer;
   z-index:4;
+  position: absolute; /* Position it absolutely */
+  left: 1rem; /* Align to the left */
+  top: 50%; /* Vertically center within the top bar */
+  transform: translateY(-50%); /* Adjust for vertical centering */
 }
 .burger span{
   display:block;
@@ -110,7 +113,7 @@ body{
   background:var(--white);
   transition:.3s;
 }
-/* Animate burger to X */
+
 .burger.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
 .burger.open span:nth-child(2){opacity:0}
 .burger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
@@ -142,11 +145,11 @@ footer{
 
 /* ----------  RESPONSIVE BREAKPOINTS ---------- */
 @media(max-width:900px){
-  .main-nav a{font-size:1.5rem}
+  .main-nav a{font-size:1.4rem}
   .main-nav ul{gap:2rem}
 }
 
-@media(max-width:1100px){
+@media(max-width:800px){
   /* show burger */
   .burger{display:flex}
 
@@ -164,7 +167,10 @@ footer{
     flex-direction:column;
     padding:2rem;
     gap:2rem;
+    align-items: flex-start; /* Align menu entries to the left */
   }
+  .main-nav ul li:nth-child(1){padding-top:50px}
   .main-nav ul li:nth-child(2){margin-right:0}
+  .main-nav ul li:nth-child(3){padding-left:0} /* Remove left padding for 'Anlage' */
   .main-nav a{font-size:1.5rem}
 }
