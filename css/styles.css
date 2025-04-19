@@ -1,0 +1,170 @@
+/* ----------  COLOR PALETTE  ---------- */
+:root{
+  --orange-nav:#d8871e;
+  --red-frame:#C61824;     /* outer frame */
+  --peach-bg:#f8d9c7;
+  --green-text:#00786e;
+  --white:#ffffff;
+  --nav-height:70px;
+}
+
+/* ----------  RESET / BASE  ---------- */
+*{box-sizing:border-box;margin:0;padding:0}
+
+/* >>> CUSTOM CURSOR FOR THE WHOLE PAGE <<< */
+html{
+  /* 16 16 = Hotspot (x,y) in Pixeln – ggf. anpassen */
+  cursor:url("../icons/tennis.png") 16 16, auto;
+}
+
+body{
+  font-family:"Poppins",system-ui,sans-serif;
+  color:var(--green-text);
+  background:var(--red-frame);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+.wrapper{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ----------  HEADER / TOP BAR  ---------- */
+.top-bar{
+  position:relative;
+  height:var(--nav-height);
+  background:var(--orange-nav);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 1rem;
+}
+
+/* logo overlaps 20 % into main */
+.logo{
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-30%);
+  z-index:3;
+}
+.logo img{height:120px;width:auto}
+
+/* ----------  NAVIGATION (desktop baseline) ---------- */
+.main-nav ul{
+  display:flex;
+  list-style:none;
+  gap:3.5rem;
+  align-items:center;
+  justify-content:center;
+}
+.main-nav a{
+  color:var(--white);
+  font-weight:700;
+  font-size:1.6rem;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.main-nav a:hover{opacity:.8}
+
+/* extra gap after “Club” so logo fits neatly */
+@media (min-width:700px){
+  .main-nav ul li:nth-child(2){
+    margin-right:8rem;
+    padding-right:20px;
+  }
+  .main-nav ul li:nth-child(3){
+    padding-left:20px;
+  }
+}
+
+/* ----------  LANGUAGE SWITCH ---------- */
+.lang-switch{
+  position:absolute;
+  right:1rem;
+  display:flex;
+  gap:1rem;
+  z-index:4;
+}
+.lang-switch a{
+  color:var(--white);
+  font-weight:700;
+  text-decoration:none;
+}
+
+/* ----------  HAMBURGER (mobile) ---------- */
+.burger{
+  display:none;
+  flex-direction:column;
+  gap:6px;
+  background:none;
+  border:none;
+  cursor:pointer;            /* ball‑cursor greift hier durch   */
+  z-index:4;
+}
+.burger span{
+  display:block;
+  width:32px;
+  height:3px;
+  background:var(--white);
+  transition:.3s;
+}
+/* Animate burger to X */
+.burger.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+
+/* ----------  MAIN CONTENT  ---------- */
+main{
+  background:var(--peach-bg);
+  max-width:92%;
+  margin:0 auto;
+  flex:1;
+  padding:6rem 2rem 2rem;
+  text-align:left;
+}
+h1{
+  font-size:3rem;
+  letter-spacing:2px;
+  font-weight:900;
+  margin-bottom:1rem;
+}
+
+/* ----------  FOOTER  ---------- */
+footer{
+  background:var(--orange-nav);
+  color:var(--white);
+  text-align:center;
+  padding:1.2rem 0;
+  font-weight:600;
+}
+
+/* ----------  RESPONSIVE BREAKPOINTS ---------- */
+@media(max-width:900px){
+  .main-nav a{font-size:1.5rem}
+  .main-nav ul{gap:2rem}
+}
+
+@media(max-width:1100px){
+  /* show burger */
+  .burger{display:flex}
+
+  /* slide‑down menu */
+  .main-nav{
+    position:fixed;
+    inset:var(--nav-height) 0 0 0;
+    background:var(--orange-nav);
+    transform:translateY(-100%);
+    transition:.3s;
+    z-index:2;
+  }
+  .main-nav.open{transform:translateY(0)}
+  .main-nav ul{
+    flex-direction:column;
+    padding:2rem;
+    gap:2rem;
+  }
+  .main-nav ul li:nth-child(2){margin-right:0}
+  .main-nav a{font-size:1.5rem}
+}

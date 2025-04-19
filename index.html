@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TC Grindelwald – Retro</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- full‑height wrapper -->
+  <div class="wrapper">
+
+    <!-- === HEADER / NAV === -->
+    <header class="top-bar">
+
+      <!-- Hamburger (mobile only) -->
+      <button class="burger" aria-label="Menü öffnen / schließen">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- NAV list -->
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#">Kalender</a></li>
+          <li><a href="#">Club</a></li>
+          <li><a href="#">Anlage</a></li>
+          <li><a href="#">Kontakt</a></li>
+        </ul>
+      </nav>
+
+      <!-- Language switch (always at right) -->
+      <div class="lang-switch">
+        <a href="#">DE</a>
+        <a href="#">EN</a>
+      </div>
+
+      <!-- centred logo -->
+      <a href="index.html" class="logo">
+        <img src="icons/logo.png" alt="Tennisclub Grindelwald Logo" />
+      </a>
+
+    </header>
+
+    <!-- === MAIN CONTENT === -->
+    <main>
+      <h1>ÜBER UNS</h1>
+      <p>Wir schreiben das Jahr 1915, als der Tennisclub Grindelwald, damals unter dem Namen Baer Lawn-Tennisclub Grindelwald, 
+        am 26. September unter dem Präsidium von Herrn Chr. Burgener gegründet wurde.</p>
+        <p>
+            Wir schreiben das Jahr 1915, als der Tennisclub Grindelwald, damals unter dem Namen Baer Lawn-Tennisclub Grindelwald, am 26. September unter dem Präsidium von Herrn Chr. Burgener gegründet wurde.
+            Heute zählt der TC Grindelwald 119 Mitglieder.
+            Unsere Tennisanlage, inmitten der Bergwelt von Grindelwald, bietet vier Sandplätze und ein Clubhaus mit Bistro für ein gemütliches Klubleben.
+        </p>
+        <p>Ob Jung oder Alt, Plausch oder Wettkampf, in unseren Aktivitäten findet jeder die Möglichkeit, seinen Spass am Tennissport auszuleben.</p>
+    </main>
+
+    <!-- === FOOTER === -->
+    <footer>
+      © 2025 TC Grindelwald
+    </footer>
+
+  </div>
+
+  <script>
+    /* simple hamburger toggle */
+    const burger   = document.querySelector('.burger');
+    const mainNav  = document.querySelector('.main-nav');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      mainNav.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
