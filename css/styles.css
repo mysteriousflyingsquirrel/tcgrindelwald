@@ -127,7 +127,7 @@ main{
   text-align:left;
 }
 h1{
-  font-size:3rem;
+  font-size:2.5rem; /* Reduced font size */
   letter-spacing:2px;
   font-weight:900;
   margin-bottom:1rem;
@@ -172,10 +172,6 @@ footer{
   .main-nav ul li:nth-child(2){margin-right:0}
   .main-nav ul li:nth-child(3){padding-left:0}
   .main-nav a{font-size:1.5rem}
-
-  main {
-    margin: 0; /* Remove left and right margins */
-  }
 }
 
 .container{
