@@ -172,6 +172,10 @@ footer{
   .main-nav ul li:nth-child(2){margin-right:0}
   .main-nav ul li:nth-child(3){padding-left:0}
   .main-nav a{font-size:1.5rem}
+
+  main {
+    margin: 0; /* Remove left and right margins */
+  }
 }
 
 .container{
