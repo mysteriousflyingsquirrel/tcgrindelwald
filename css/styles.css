@@ -276,7 +276,7 @@ footer{
 }
 
 .board-image {
-  width: 280px; /* Specific size for board images */
+  width: 200px !important;
   height: auto;
   border-radius: 10px;
 }
@@ -299,7 +299,8 @@ footer{
 }
 
 .interclub-image {
-  width: 300px; /* Specific size for interclub images */
+  width: 100%; /* Dynamic width */
+  max-width: 600px; /* Maximum width */
   height: auto;
   border-radius: 10px;
 }
