@@ -136,6 +136,7 @@ h1{
   letter-spacing:2px;
   font-weight:900;
   margin-bottom:1rem;
+  margin-top: 1.5rem; /* Add more space above each h1 */
 }
 
 /* ----------  FOOTER  ---------- */
@@ -226,4 +227,69 @@ footer{
 #map {
   border-radius: 10px;
   overflow: hidden; /* Ensure the content respects the border radius */
+}
+
+#board-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#board-list li {
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#board-list img {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+}
+
+#board-list p {
+  margin: 0;
+}
+
+.board-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.board-list li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.board-image {
+  width: 100px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.board-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.board-name {
+  margin: 0;
+  font-weight: bold;
+}
+
+.board-function {
+  margin: 0;
+  color: var(--green-text);
 }
