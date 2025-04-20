@@ -259,8 +259,13 @@
     }
 
     function switchLanguage(lang, event) {
-      if (event) event.preventDefault(); // Prevent default link behavior
+        if (event) event.preventDefault(); // Prevent default link behavior
+      localStorage.setItem('language', lang); // Save selected language
+      const menuItems = document.querySelectorAll(".main-nav ul li a");
       const content = translations[lang];
+      menuItems.forEach((item, index) => {
+        item.textContent = content.menu[index];
+      });
       document.getElementById("main-title").textContent = content.title;
       renderEvents(content.events, content.registerText, lang);
     }
