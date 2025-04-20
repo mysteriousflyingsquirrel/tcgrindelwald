@@ -6,6 +6,12 @@
   <title>Club - TC Grindelwald</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" href="icons/favicon.png" type="image/png" />
+  <style>
+    .no-bullets {
+      list-style-type: none;
+      padding: 0;
+    }
+  </style>
 </head>
 <body>
   <div class="wrapper">
@@ -40,8 +46,55 @@
     </header>
     <main>
       <div class="container">
-        <h1 id="main-title">Club</h1>
-        <p id="main-paragraph-1">Erfahren Sie mehr über unseren Club.</p>
+        <div class="text-section">
+          <h1 id="about-title"></h1>
+          <p id="about-paragraph">
+        </div>
+
+        <div class="text-section">
+          <h1 id="board-title">Vorstand</h1>
+          <p id="board-paragraph">Unser Vorstand besteht aus engagierten Mitgliedern, die den Club leiten und seine Aktivitäten organisieren.</p>
+        </div>
+
+        <div class="text-section">
+          <h1 id="membership-title"></h1>
+          <p id="membership-paragraph"></p>
+          <a href="https://mein.fairgate.ch/tcg1915/register/NDc1OA==" target="_blank" class="event-link" id="membership-button">Anmeldung</a>
+          <a href="/assets/Vereinsstatuten.pdf" target="_blank" class="event-link" id="statutes-button">Statuten</a>
+        </div>
+
+        <div class="text-section">
+          <h1 id="interclub-title">Interclub</h1>
+          <p id="interclub-paragraph">Unsere Teams nehmen regelmäßig an Interclub-Wettbewerben teil und repräsentieren den Club auf regionaler Ebene.</p>
+        </div>
+
+        <div class="text-section">
+          <h1 id="sponsors-title">Sponsoren</h1>
+          <p id="sponsors-paragraph" style="margin-bottom: 10px;">Wir danken unseren Sponsoren, die uns unterstützen und unsere Aktivitäten ermöglichen.</p>
+          <ul id="sponsors-list" class="no-bullets">
+            <li>Lehmann + Bacher Treuhand AG, Grindelwald</li>
+            <li>Rothenegg-Garage, Grindelwald</li>
+            <li>Hotel Spinne, Grindelwald</li>
+            <li>Victoria-Jungfrau Tenniscenter, Interlaken</li>
+            <li>RUGENBRÄU AG, Matten b. Interlaken</li>
+            <li>Bäckerei Ringgenberg, Grindelwald</li>
+            <li>Bank EKI, Grindelwald</li>
+            <li>Hotel Kreuz & Post, Grindelwald</li>
+            <li>Hotel Restaurant Alpina, Grindelwald</li>
+            <li>Central Hotel Wolter, Grindelwald</li>
+            <li>Sutter Druck AG, Grindelwald</li>
+            <li>Hotel Steinbock - Pizzeria Da Salvi, Grindelwald</li>
+            <li>Selfness-Hotel Eiger, Grindelwald</li>
+            <li>Kaufmann-Sport, Grindelwald</li>
+            <li>FANKY'S Lingerie, Irène Fankhauser, Chalet Abendrot Grindelwald</li>
+            <li>Jeannine Zurbuchen, Bildmodus.ch</li>
+            <li>Fischer Marcel, Heizung und Sanitär</li>
+            <li>Brawand Zimmerei AG</li>
+            <li>Die Mobiliar</li>
+            <li>Jungfraubahnen Management AG</li>
+            <li>Weinhandlung Ritschard AG</li>
+          </ul>
+        </div>
       </div>
     </main>
     <footer>
@@ -60,16 +113,133 @@
     const translations = {
       de: {
         menu: ["Kalender", "Club", "Anlage", "Kontakt"],
-        title: "CLUB",
-        paragraphs: [
-          "Erfahren Sie mehr über unseren Club."
-        ]
+        sections: {
+          about: {
+            title: "Über uns",
+            paragraph: `
+              <p>Der Tennisclub Grindelwald wurde gegründet, um Tennisbegeisterten eine Plattform zu bieten, auf der sie spielen, lernen und sich vernetzen können.</p>
+              <p>Wir schreiben das Jahr 1915, als der Tennisclub Grindelwald, damals unter dem Namen Baer Lawn-Tennisclub Grindelwald, am 26. September unter dem Präsidium von Herrn Chr. Burgener gegründet wurde.</p>
+              <p>Heute zählt der TC Grindelwald weit über 100 Mitglieder.</p>
+              <p>Unsere Tennisanlage, inmitten der Bergwelt von Grindelwald, bietet vier Sandplätze und ein Clubhaus mit Bistro für ein gemütliches Klubleben.</p>
+              <p>Ob Jung oder Alt, Plausch oder Wettkampf, in unseren Aktivitäten findet jeder die Möglichkeit, seinen Spass am Tennissport auszuleben.</p>
+            `
+          },
+          board: {
+            title: "Vorstand",
+            paragraph: "Unser Vorstand besteht aus engagierten Mitgliedern, die den Club leiten und seine Aktivitäten organisieren."
+          },
+          membership: {
+            title: "Mitgliedschaft",
+            paragraph: `
+              <p>Du willst Mitglied werden...?​.</p>
+              <p>Wir freuen uns auf jedes neue Mitglied das mit uns die wunderschönen Tennisplätze und Clubhaus teilen möchte!</p></br>
+              <p><strong>Mitgliederbeiträge pro Jahr</strong></p></br>
+              <p><strong>Schüler:</strong> CHF 40.00</p>
+              <p><strong>Junioren bis 18 Jahre:</strong> CHF 60.00</p>
+              <p><strong>Studenten bis 25 Jahre:</strong> CHF 100.00</p>
+              <p><strong>Aktivmitglied:</strong> CHF 150.00</p>
+              <p><strong>Passivmitglied:</strong> CHF 70.00</p>
+            `,
+            button: "Anmeldung",
+            buttonStatutes: "Statuten"
+          },
+          interclub: {
+            title: "Interclub",
+            paragraph: "Unsere Teams nehmen regelmäßig an Interclub-Wettbewerben teil und repräsentieren den Club auf regionaler Ebene."
+          },
+          sponsors: {
+            title: "Sponsoren",
+            paragraph: "Wir danken unseren Sponsoren, die uns unterstützen und unsere Aktivitäten ermöglichen.",
+            list: [
+              "Lehmann + Bacher Treuhand AG, Grindelwald",
+              "Rothenegg-Garage, Grindelwald",
+              "Hotel Spinne, Grindelwald",
+              "Victoria-Jungfrau Tenniscenter, Interlaken",
+              "RUGENBRÄU AG, Matten b. Interlaken",
+              "Bäckerei Ringgenberg, Grindelwald",
+              "Bank EKI, Grindelwald",
+              "Hotel Kreuz & Post, Grindelwald",
+              "Hotel Restaurant Alpina, Grindelwald",
+              "Central Hotel Wolter, Grindelwald",
+              "Sutter Druck AG, Grindelwald",
+              "Hotel Steinbock - Pizzeria Da Salvi, Grindelwald",
+              "Selfness-Hotel Eiger, Grindelwald",
+              "Kaufmann-Sport, Grindelwald",
+              "FANKY'S Lingerie, Irène Fankhauser, Chalet Abendrot Grindelwald",
+              "Jeannine Zurbuchen, Bildmodus.ch",
+              "Fischer Marcel, Heizung und Sanitär",
+              "Brawand Zimmerei AG",
+              "Die Mobiliar",
+              "Jungfraubahnen Management AG",
+              "Weinhandlung Ritschard AG"
+            ]
+          }
+        }
       },
       en: {
         menu: ["Calendar", "Club", "Facility", "Contact"],
-        title: "CLUB",
-        paragraphs: ["Learn more about our club."
-        ]
+        sections: {
+          about: {
+            title: "About Us",
+            paragraph: `
+              <p>The Tennis Club Grindelwald was founded to provide tennis enthusiasts with a platform to play, learn, and connect.</p>
+              <p>It was the year 1915 when the Tennis Club Grindelwald, then known as Baer Lawn-Tennisclub Grindelwald, was founded on September 26 under the presidency of Mr. Chr. Burgener.</p>
+              <p>Today, the TC Grindelwald has well over 100 members.</p>
+              <p>Our tennis facility, nestled in the mountains of Grindelwald, offers four clay courts and a clubhouse with a bistro for a cozy club life.</p>
+              <p>Whether young or old, casual or competitive, our activities offer everyone the opportunity to enjoy the sport of tennis.</p>
+            `
+          },
+          board: {
+            title: "Board",
+            paragraph: "Our board consists of dedicated members who lead the club and organize its activities."
+          },
+          membership: {
+            title: "Membership",
+            paragraph: `
+                <p>Do you want to become a member...?​.</p>
+                <p>We look forward to every new member who wants to share the beautiful tennis courts and clubhouse with us!</p></br>
+                <p><strong>Membership fees per year</strong></p></br>
+                <p><strong>Students:</strong> CHF 40.00</p>
+                <p><strong>Juniors up to 18 years:</strong> CHF 60.00</p>
+                <p><strong>University students up to 25 years:</strong> CHF 100.00</p>
+                <p><strong>Active member:</strong> CHF 150.00</p>
+                <p><strong>Passive member:</strong> CHF 70.00</p>
+            `,
+            button: "Register",
+            buttonStatutes: "Statutes"
+          },
+          interclub: {
+            title: "Interclub",
+            paragraph: "Our teams regularly participate in interclub competitions, representing the club at the regional level."
+          },
+          sponsors: {
+            title: "Sponsors",
+            paragraph: "We thank our sponsors who support us and make our activities possible.",
+            list: [
+              "Lehmann + Bacher Treuhand AG, Grindelwald",
+              "Rothenegg-Garage, Grindelwald",
+              "Hotel Spinne, Grindelwald",
+              "Victoria-Jungfrau Tenniscenter, Interlaken",
+              "RUGENBRÄU AG, Matten b. Interlaken",
+              "Bäckerei Ringgenberg, Grindelwald",
+              "Bank EKI, Grindelwald",
+              "Hotel Kreuz & Post, Grindelwald",
+              "Hotel Restaurant Alpina, Grindelwald",
+              "Central Hotel Wolter, Grindelwald",
+              "Sutter Druck AG, Grindelwald",
+              "Hotel Steinbock - Pizzeria Da Salvi, Grindelwald",
+              "Selfness-Hotel Eiger, Grindelwald",
+              "Kaufmann-Sport, Grindelwald",
+              "FANKY'S Lingerie, Irène Fankhauser, Chalet Abendrot Grindelwald",
+              "Jeannine Zurbuchen, Bildmodus.ch",
+              "Fischer Marcel, Heating and Sanitary",
+              "Brawand Carpentry AG",
+              "Die Mobiliar",
+              "Jungfraubahnen Management AG",
+              "Weinhandlung Ritschard AG"
+            ]
+          }
+        }
       }
     };
 
@@ -81,8 +251,26 @@
       menuItems.forEach((item, index) => {
         item.textContent = content.menu[index];
       });
-      document.getElementById("main-title").textContent = content.title;
-      document.getElementById("main-paragraph-1").textContent = content.paragraphs[0];
+      document.getElementById("about-title").textContent = content.sections.about.title;
+      document.getElementById("about-paragraph").innerHTML = content.sections.about.paragraph;
+      document.getElementById("board-title").textContent = content.sections.board.title;
+      document.getElementById("board-paragraph").textContent = content.sections.board.paragraph;
+      document.getElementById("membership-title").textContent = content.sections.membership.title;
+      document.getElementById("membership-paragraph").innerHTML = content.sections.membership.paragraph;
+      document.getElementById("membership-button").textContent = content.sections.membership.button;
+      document.getElementById("statutes-button").textContent = content.sections.membership.buttonStatutes;
+      document.getElementById("interclub-title").textContent = content.sections.interclub.title;
+      document.getElementById("interclub-paragraph").textContent = content.sections.interclub.paragraph;
+      document.getElementById("sponsors-title").textContent = content.sections.sponsors.title;
+      document.getElementById("sponsors-paragraph").textContent = content.sections.sponsors.paragraph;
+
+      const sponsorsList = document.getElementById("sponsors-list");
+      sponsorsList.innerHTML = ""; // Clear existing list
+      content.sections.sponsors.list.forEach(sponsor => {
+        const listItem = document.createElement("li");
+        listItem.textContent = sponsor;
+        sponsorsList.appendChild(listItem);
+      });
     }
 
     // Apply saved language or default to DE on page load
