@@ -60,12 +60,12 @@
           <h1 id="membership-title"></h1>
           <p id="membership-paragraph"></p>
           <a href="https://mein.fairgate.ch/tcg1915/register/NDc1OA==" target="_blank" class="event-link" id="membership-button">Anmeldung</a>
-          <a href="/assets/Vereinsstatuten.pdf" target="_blank" class="event-link" id="statutes-button">Statuten</a>
+          <a href="assets/Vereinsstatuten.pdf" target="_blank" class="event-link" id="statutes-button">Statuten</a>
         </div>
 
         <div class="text-section">
           <h1 id="interclub-title">Interclub</h1>
-          <p id="interclub-paragraph">Unsere Teams nehmen regelmäßig an Interclub-Wettbewerben teil und repräsentieren den Club auf regionaler Ebene.</p>
+          <ul id="interclub-list" class="interclub-list"></ul>
         </div>
 
         <div class="text-section">
@@ -139,7 +139,7 @@
           membership: {
             title: "Mitgliedschaft",
             paragraph: `
-              <p>Du willst Mitglied werden...?​.</p>
+              <p>Du willst Mitglied werden?​</p>
               <p>Wir freuen uns auf jedes neue Mitglied das mit uns die wunderschönen Tennisplätze und Clubhaus teilen möchte!</p></br>
               <p><strong>Mitgliederbeiträge pro Jahr</strong></p></br>
               <p><strong>Schüler:</strong> CHF 40.00</p>
@@ -153,7 +153,18 @@
           },
           interclub: {
             title: "Interclub",
-            paragraph: "Unsere Teams nehmen regelmäßig an Interclub-Wettbewerben teil und repräsentieren den Club auf regionaler Ebene."
+            teams: [
+              {
+                image: "images/chnebelgemscheni.png",
+                title: "Chnebel Gemscheni",
+                text: "Die glorreichen Chnebel Gemscheni sind die Topfavoriten in der 3. Liga."
+              },
+              {
+                image: "images/senioren.png",
+                title: "Senioren 55+",
+                text: "Die Senioren mischen die 55+ 2. Liga auf."
+              }
+            ]
           },
           sponsors: {
             title: "Sponsoren",
@@ -212,7 +223,7 @@
           membership: {
             title: "Membership",
             paragraph: `
-                <p>Do you want to become a member...?​.</p>
+                <p>Do you want to become a member?​</p>
                 <p>We look forward to every new member who wants to share the beautiful tennis courts and clubhouse with us!</p></br>
                 <p><strong>Membership fees per year</strong></p></br>
                 <p><strong>Students:</strong> CHF 40.00</p>
@@ -226,7 +237,18 @@
           },
           interclub: {
             title: "Interclub",
-            paragraph: "Our teams regularly participate in interclub competitions, representing the club at the regional level."
+            teams: [
+              {
+                image: "images/chnebelgemscheni.png",
+                title: "Chnebel Gemscheni",
+                text: "The glorious Chnebel Gemscheni are the top favorites in the 3rd league."
+              },
+              {
+                image: "images/senioren.png",
+                title: "Seniors 55+",
+                text: "The seniors are shaking up the 55+ 2nd league."
+              }
+            ]
           },
           sponsors: {
             title: "Sponsors",
@@ -292,7 +314,23 @@
       document.getElementById("membership-button").textContent = content.sections.membership.button;
       document.getElementById("statutes-button").textContent = content.sections.membership.buttonStatutes;
       document.getElementById("interclub-title").textContent = content.sections.interclub.title;
-      document.getElementById("interclub-paragraph").textContent = content.sections.interclub.paragraph;
+
+      const interclubList = document.getElementById("interclub-list");
+      interclubList.innerHTML = ""; // Clear existing list
+      content.sections.interclub.teams.forEach(team => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `
+          <div class="board-member">
+            <img src="${team.image}" alt="${team.title}" class="interclub-image">
+            <div class="board-info">
+              <p class="board-name"><strong>${team.title}</strong></p>
+              <p class="board-function">${team.text}</p>
+            </div>
+          </div>
+        `;
+        interclubList.appendChild(listItem);
+      });
+
       document.getElementById("sponsors-title").textContent = content.sections.sponsors.title;
       document.getElementById("sponsors-paragraph").textContent = content.sections.sponsors.paragraph;
 

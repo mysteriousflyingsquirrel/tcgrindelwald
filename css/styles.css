@@ -247,7 +247,7 @@ footer{
 }
 
 #board-list img {
-  width: 100px;
+  width: 150px;
   height: auto;
   border-radius: 10px;
 }
@@ -274,7 +274,30 @@ footer{
 }
 
 .board-image {
-  width: 100px;
+  width: 280px; /* Specific size for board images */
+  height: auto;
+  border-radius: 10px;
+}
+
+.interclub-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.interclub-list li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.interclub-image {
+  width: 300px; /* Specific size for interclub images */
   height: auto;
   border-radius: 10px;
 }
