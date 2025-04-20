@@ -227,6 +227,8 @@ footer{
 #map {
   border-radius: 10px;
   overflow: hidden; /* Ensure the content respects the border radius */
+  z-index: 0; /* Ensure the map is below the menu and header */
+  position: relative; /* Maintain proper stacking context */
 }
 
 #board-list {

@@ -6,6 +6,8 @@
   <title>Anlage - TC Grindelwald</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" href="icons/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
   <div class="wrapper">
@@ -40,8 +42,34 @@
     </header>
     <main>
       <div class="container">
-        <h1 id="main-title">Anlage</h1>
-        <p id="main-paragraph-1">Unsere Tennisanlage bietet vier Sandplätze und ein Clubhaus.</p>
+        <div class="text-section">
+          <h1 id="opening-hours-title"></h1>
+          <p id="opening-hours-paragraph"></p>
+        </div>
+
+        <div class="text-section">
+          <h1 id="abos-title"></h1>
+          <p id="abos-paragraph"></p>
+        </div>
+
+        <div class="text-section">
+          <h1 id="tennis-courts-title"></h1>
+          <p id="tennis-courts-paragraph"></p>
+          <img id="tennis-courts-image" src="images/anlage.png" alt="Tennisanlage" style="width: 100%; max-width: 700px; margin-top: 20px; border-radius: 10px;">
+        </div>
+
+        <div class="text-section">
+          <h1 id="clubhouse-title"></h1>
+          <p id="clubhouse-paragraph"></p>
+          <a href="mailto:tcgrindelwald@gmail.com" class="event-link" style="margin-top: 10px; display: inline-block;">tcgrindelwald@gmail.com</a>
+        </div>
+
+        <div class="text-section">
+          <h1 id="location-title"></h1>
+          <p id="location-paragraph"></p>
+        </div>
+
+        <div id="map" style="height: 400px; margin-top: 20px;"></div>
       </div>
     </main>
     <footer>
@@ -60,15 +88,128 @@
     const translations = {
       de: {
         menu: ["Kalender", "Club", "Anlage", "Kontakt"],
-        title: "ANLAGE",
+        openingHours: {
+          title: "ÖFFNUNGSZEITEN",
+          paragraph: `
+            Wenn das Wetter es zulässt, sind unsere Plätze von Ende April bis etwa Ende September/Mitte Oktober geöffnet, 
+            <strong> täglich von 8:00 bis 22:00 Uhr </strong>
+          `
+        },
+        abos: {
+          title: "ABOS",
+          paragraph: `
+            <strong>Saison-Abo Schüler:</strong> CHF 50.00<br />
+            <strong>Saison-Abo Junioren bis 18 Jahre und Studenten bis 25 Jahre:</strong> CHF 100.00<br />
+            <strong>Saison-Abo Erwachsene:</strong> CHF 160.00<br /><br />
+            <strong>Wichtig:</strong> Ein Saison-Abo kann nur ein Aktivmitglied, Junior & Student oder Schüler abschliessen.
+          `
+        },
+        tennisCourts: {
+          title: "TENNISPLÄTZE",
+          paragraph: `
+            Unsere Tennisanlage bietet 4 bestens gepflegte Sandplätze.<br /><br />
+            Seit 2013 steht bei der Tenniswand ein Tri-Tennis, geeignet zum Aufwärmen oder zur Verbesserung der Schläge.<br /><br />
+            Die Garderoben/Duschen/Toiletten befinden sich in der Ein-/Ausfahrt der Tennisanlage. Links an der Wand bei der Eingangstüre ist ein kleiner Schlüsselsafe angebracht, dessen Zugangscode 3818 ist. Dort befindet sich der Schlüssel zu den Garderoben/Duschen/Toiletten.<br /><br />
+            Wir bitten dich, wieder zu schliessen und den Schlüssel in den Safe zurück zu legen.
+          `
+        },
+        clubhouse: {
+          title: "KLUBHAUS",
+          paragraph: `
+            Während den Events ist unser Clubhaus bewirtet und wir stellen den Gästen oder hungrigen Tennisspielern gerne ein Menu sowie eine reichliche Auswahl an Getränken und Snacks zur Verfügung. Ob Anfänger oder halb Profi, kleiner Nadal oder Zukunfts-Federer, in unserem Clubhaus ist jedermann(-frau) willkommen.<br /><br />
+            Von der Sonnenterrasse aus kannst du bei einem kühlen Drink die Tennisspieler beim „kämpfen“ beobachten und unterstützen.<br /><br />
+            Das Clubhaus bietet einen grossen Raum mit Tischen und Stühlen sowie eine eigene, moderne Küche.<br /><br />
+            Garderoben mit Duschen und WCs stehen im nebenanliegenden Gebäude zur Verfügung.<br /><br />
+            Für die Autofahrer unter unseren Gästen und Mitgliedern bieten wir auch kostenlose Parkplätze an.<br /><br />
+            <strong>Mich kann man mieten</strong><br /><br />
+            Das Clubhaus kann vom Frühling bis Ende Herbst für private oder geschäftliche Anlässe gemietet werden.<br /><br />
+            <strong>Unsere Mietpreise:</strong><br />
+            CHF 250.00 pro Tag<br />
+            CHF 150.00 pro 1/2 Tag<br />
+            Clubmitglieder erhalten eine Ermässigung von pauschal CHF 50.00.<br /><br />
+            <strong>Im Mietpreis inbegriffen:</strong><br />
+            sämtliches Mobiliar inkl. Geschirr und Küchenutensilien<br />
+            Heizung nach Bedarf<br />
+            Gasgrill<br />
+            Parkplätze<br /><br />
+            <strong>Weitere Bestimmungen:</strong><br />
+            Getränke können entweder selber mitgebracht werden oder vergünstigt durch den Club bezogen werden<br />
+            Essen wird vom Mieter organisiert<br />
+            Grobreinigung (Geschirrspüler vorhanden) wird vorausgesetzt oder für einen Aufpreis von CHF 50.00 durch den Club vorgenommen.<br /><br />
+            <strong>Reservationen, Auskunft etc.</strong><br />
+            Tennisclub Grindelwald
+          `
+        },
+        title: "STANDORT",
         paragraphs: [
-          "Unsere Tennisanlage bietet vier Sandplätze und ein Clubhaus."
+          `Gehen Sie durch das Dorf von Grindelwald bis zur Kirche. Abzweigen nach rechts zur Pfingstegg Bahn. Dort weiter runter ins Tal und über die Brücke. Nach ca. 200 m rechts zum Clubhaus mit Parkplatz. Schon befinden Sie sich bei unserer schönen Tennisanlage...!
+          <br /><br />
+          Tennisclub Grindelwald<br />
+          Mettenbergstrasse 18<br />
+          3818 Grindelwald`
         ]
       },
       en: {
         menu: ["Calendar", "Club", "Facility", "Contact"],
-        title: "FACILITY",
-        paragraphs: ["Our tennis facility offers four clay courts and a clubhouse."
+        openingHours: {
+          title: "OPENING HOURS",
+          paragraph: `
+            If the weather permits, our courts are open from the end of April to around the end of September/mid-October, 
+            <strong> daily from 8:00 AM to 10:00 PM </strong>
+          `
+        },
+        abos: {
+          title: "SUBSCRIPTIONS",
+          paragraph: `
+            <strong>Season subscription for students:</strong> CHF 50.00<br />
+            <strong>Season subscription for juniors up to 18 years and university students up to 25 years:</strong> CHF 100.00<br />
+            <strong>Season subscription for adults:</strong> CHF 160.00<br /><br />
+            <strong>Important:</strong> A season subscription can only be purchased by an active member, junior & student, or pupil.
+          `
+        },
+        tennisCourts: {
+          title: "TENNIS COURTS",
+          paragraph: `
+            Our tennis facility offers 4 well-maintained clay courts.<br /><br />
+            Since 2013, a Tri-Tennis has been available at the tennis wall, suitable for warming up or improving strokes.<br /><br />
+            The changing rooms/showers/toilets are located at the entrance/exit of the tennis facility. On the left wall near the entrance door, there is a small key safe with the access code 3818. Inside, you will find the key to the changing rooms/showers/toilets.<br /><br />
+            Please remember to lock up again and return the key to the safe.
+          `
+        },
+        clubhouse: {
+          title: "CLUBHOUSE",
+          paragraph: `
+            During events, our clubhouse is staffed, and we are happy to provide guests or hungry tennis players with a menu as well as a wide selection of drinks and snacks. Whether beginner or semi-pro, little Nadal or future Federer, everyone is welcome in our clubhouse.<br /><br />
+            From the sun terrace, you can watch and support the tennis players "fighting" while enjoying a cool drink.<br /><br />
+            The clubhouse offers a large room with tables and chairs as well as its own modern kitchen.<br /><br />
+            Changing rooms with showers and toilets are available in the adjacent building.<br /><br />
+            For drivers among our guests and members, we also offer free parking.<br /><br />
+            <strong>You can rent me</strong><br /><br />
+            The clubhouse can be rented from spring to the end of autumn for private or business events.<br /><br />
+            <strong>Our rental prices:</strong><br />
+            CHF 250.00 per day<br />
+            CHF 150.00 per half day<br />
+            Club members receive a flat discount of CHF 50.00.<br /><br />
+            <strong>Included in the rental price:</strong><br />
+            All furniture including dishes and kitchen utensils<br />
+            Heating as needed<br />
+            Gas grill<br />
+            Parking spaces<br /><br />
+            <strong>Additional terms:</strong><br />
+            Drinks can either be brought by yourself or purchased at a discount through the club<br />
+            Food is organized by the tenant<br />
+            Basic cleaning (dishwasher available) is required or can be done by the club for an additional charge of CHF 50.00.<br /><br />
+            <strong>Reservations, inquiries, etc.</strong><br />
+            Tennisclub Grindelwald
+          `
+        },
+        title: "LOCATION",
+        paragraphs: [
+          `Walk through the village of Grindelwald to the church. Turn right towards the Pfingstegg railway. Continue down into the valley and cross the bridge. After about 200 m, turn right to the clubhouse with parking. You have arrived at our beautiful tennis facility...!
+          <br /><br />
+          Tennisclub Grindelwald<br />
+          Mettenbergstrasse 18<br />
+          3818 Grindelwald`
         ]
       }
     };
@@ -81,14 +222,32 @@
       menuItems.forEach((item, index) => {
         item.textContent = content.menu[index];
       });
-      document.getElementById("main-title").textContent = content.title;
-      document.getElementById("main-paragraph-1").textContent = content.paragraphs[0];
+      document.getElementById("clubhouse-title").textContent = content.clubhouse.title; // Update Klubhaus title
+      document.getElementById("clubhouse-paragraph").innerHTML = content.clubhouse.paragraph; // Update Klubhaus paragraph
+      document.getElementById("opening-hours-title").textContent = content.openingHours.title; // Update Öffnungszeiten title
+      document.getElementById("opening-hours-paragraph").innerHTML = content.openingHours.paragraph; // Update Öffnungszeiten paragraph
+      document.getElementById("abos-title").textContent = content.abos.title; // Update Abos title
+      document.getElementById("abos-paragraph").innerHTML = content.abos.paragraph; // Update Abos paragraph
+      document.getElementById("tennis-courts-title").textContent = content.tennisCourts.title; // Update Tennisplätze title
+      document.getElementById("tennis-courts-paragraph").innerHTML = content.tennisCourts.paragraph; // Update Tennisplätze paragraph
+      document.getElementById("location-title").textContent = content.title;
+      document.getElementById("location-paragraph").innerHTML = content.paragraphs[0]; // Render paragraph dynamically
     }
 
-    // Apply saved language or default to DE on page load
+    // Ensure the map is initialized after the DOM is fully loaded
     document.addEventListener('DOMContentLoaded', () => {
       const savedLanguage = localStorage.getItem('language') || 'de';
       switchLanguage(savedLanguage);
+
+      // Initialize Leaflet map
+      const map = L.map('map').setView([46.620367933828966, 8.045839020854691], 15);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      L.marker([46.620367933828966, 8.045839020854691]).addTo(map)
+        .bindPopup('Tennisclub Grindelwald')
+        .openPopup();
     });
   </script>
 </body>
