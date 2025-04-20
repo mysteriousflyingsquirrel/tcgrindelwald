@@ -198,17 +198,8 @@ footer{
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.event-list-container li a {
-  color: #007BFF;
-  text-decoration: none;
-}
-
-.event-list-container li a:hover {
-  text-decoration: underline;
 }
 
 .event-link {
@@ -218,12 +209,21 @@ footer{
   border: 2px solid var(--green-text);
   padding: 5px 10px;
   border-radius: 5px;
-  margin-top: 10px; /* Add margin to separate from surrounding text */
-  display: inline-block; /* Ensure proper spacing */
+  margin-top: 10px;
+  display: inline-block;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .event-link:hover {
   background-color: var(--green-text);
   color: var(--white);
+}
+
+.text-section {
+  padding-bottom: 10px;
+}
+
+#map {
+  border-radius: 10px;
+  overflow: hidden; /* Ensure the content respects the border radius */
 }

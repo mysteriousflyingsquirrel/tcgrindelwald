@@ -6,6 +6,8 @@
   <title>Kontakt - TC Grindelwald</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" href="icons/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
   <div class="wrapper">
@@ -41,7 +43,9 @@
     <main>
       <div class="container">
         <h1 id="main-title">Kontakt</h1>
-        <p id="main-paragraph-1">Kontaktieren Sie uns für weitere Informationen.</p>
+        <p id="main-paragraph-1"></p>
+        <a href="mailto:tcgrindelwald@gmail.com" class="event-link">tcgrindelwald@gmail.com</a>
+        <div id="map" style="height: 400px; margin-top: 20px;"></div>
       </div>
     </main>
     <footer>
@@ -62,13 +66,14 @@
         menu: ["Kalender", "Club", "Anlage", "Kontakt"],
         title: "KONTAKT",
         paragraphs: [
-          "Kontaktieren Sie uns für weitere Informationen."
+          "Tennisclub Grindelwald<br />Mettenbergstrasse 18<br />3818 Grindelwald"
         ]
       },
       en: {
         menu: ["Calendar", "Club", "Facility", "Contact"],
         title: "CONTACT",
-        paragraphs: ["Contact us for more information."
+        paragraphs: [
+          "Tennisclub Grindelwald<br />Mettenbergstrasse 18<br />3818 Grindelwald"
         ]
       }
     };
@@ -82,13 +87,22 @@
         item.textContent = content.menu[index];
       });
       document.getElementById("main-title").textContent = content.title;
-      document.getElementById("main-paragraph-1").textContent = content.paragraphs[0];
+      document.getElementById("main-paragraph-1").innerHTML = content.paragraphs[0];
     }
 
-    // Apply saved language or default to DE on page load
+    // Initialize Leaflet map
     document.addEventListener('DOMContentLoaded', () => {
       const savedLanguage = localStorage.getItem('language') || 'de';
       switchLanguage(savedLanguage);
+
+      const map = L.map('map').setView([46.62037203727661, 8.04583004836632], 15);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+      L.marker([46.62037203727661, 8.04583004836632]).addTo(map)
+        .bindPopup('Tennisclub Grindelwald')
+        .openPopup();
     });
   </script>
 </body>

@@ -6,11 +6,6 @@
   <title>TC Grindelwald – Home</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" href="icons/favicon.png" type="image/png" />
-  <style>
-    .text-section {
-      padding-bottom: 20px; /* Add padding to the bottom */
-    }
-  </style>
 </head>
 <body>
 
@@ -57,20 +52,8 @@
         </div>
         <div class="text-section">
             <h1 id="reservation-title">Reservierungen</h1>
-            <p id="reservation-paragraph-1">
-                Hier können Sie Ihre Tennisplätze reservieren.<br /><br />
-
-          Pro Stunde CHF 24.00<br /><br />
-
-          Wie bezahle ich, wenn das Clubhaus nicht besetzt ist ...?<br /><br />
-
-          Am besten buchst du deinen Platz online über GotCourts. Die Bezahlung erfolgt bequem per Kreditkarte. Auf GotCourts kannst du zudem jederzeit prüfen, ob am gewünschten Spieltermin noch ein Platz frei ist oder nicht.<br /><br />
-
-          Du kannst den Platz auch direkt auf der Anlage beim Clubhaus buchen. Vor Ort ist ein Tablet mit dem entsprechenden Buchungssystem installiert. Zusätzlich hast du auch die Möglichkeit, die Platzmiete mit Bargeld oder per TWINT zu bezahlen. Bei Barzahlung bitten wir dich, den entsprechenden Geldbetrag in den dafür vorgesehenen Briefumschlag zu legen und den Umschlag in den Briefkasten zu werfen. Der Briefkasten ist beim Clubhaus, rechts neben der Türe und wird regelmässig geleert.<br /><br />
-
-          Wir bitten um FAIRPLAY auch neben dem Tennisplatz.<br /><br />
-
-          Der Tennisclub sagt dir bereits jetzt danke für das Bezahlen der Platzmiete!</p>
+            <p id="reservation-paragraph-1"></p>
+          <a href="https://availio.fairgate.ch/" target="_blank" class="event-link">AVAILIO</a>
         </div>
       </div>
     </main>
@@ -83,7 +66,6 @@
   </div>
 
   <script>
-    /* simple hamburger toggle */
     const burger   = document.querySelector('.burger');
     const mainNav  = document.querySelector('.main-nav');
     burger.addEventListener('click', () => {
@@ -106,7 +88,7 @@
 
           Wie bezahle ich, wenn das Clubhaus nicht besetzt ist ...?<br /><br />
 
-          Am besten buchst du deinen Platz online über GotCourts. Die Bezahlung erfolgt bequem per Kreditkarte. Auf GotCourts kannst du zudem jederzeit prüfen, ob am gewünschten Spieltermin noch ein Platz frei ist oder nicht.<br /><br />
+          Am besten buchst du deinen Platz online über Availio. Die Bezahlung erfolgt bequem per Kreditkarte. Auf Availio kannst du zudem jederzeit prüfen, ob am gewünschten Spieltermin noch ein Platz frei ist oder nicht.<br /><br />
 
           Du kannst den Platz auch direkt auf der Anlage beim Clubhaus buchen. Vor Ort ist ein Tablet mit dem entsprechenden Buchungssystem installiert. Zusätzlich hast du auch die Möglichkeit, die Platzmiete mit Bargeld oder per TWINT zu bezahlen. Bei Barzahlung bitten wir dich, den entsprechenden Geldbetrag in den dafür vorgesehenen Briefumschlag zu legen und den Umschlag in den Briefkasten zu werfen. Der Briefkasten ist beim Clubhaus, rechts neben der Türe und wird regelmässig geleert.<br /><br />
 
@@ -129,7 +111,7 @@
 
           How do I pay if the clubhouse is not staffed ...?<br /><br />
 
-          The best way is to book your court online via GotCourts. Payment is conveniently made by credit card. On GotCourts, you can also check at any time whether a court is available at your desired playing time.<br /><br />
+          The best way is to book your court online via Availio. Payment is conveniently made by credit card. On Availio, you can also check at any time whether a court is available at your desired playing time.<br /><br />
 
           You can also book the court directly at the facility near the clubhouse. On-site, there is a tablet with the corresponding booking system installed. Additionally, you also have the option to pay the court fee in cash or via TWINT. For cash payments, we kindly ask you to place the corresponding amount in the designated envelope and drop the envelope into the mailbox. The mailbox is located at the clubhouse, to the right of the door, and is regularly emptied.<br /><br />
 
@@ -141,8 +123,8 @@
     };
 
     function switchLanguage(lang, event) {
-      if (event) event.preventDefault(); // Prevent default link behavior
-      localStorage.setItem('language', lang); // Save selected language
+      if (event) event.preventDefault();
+      localStorage.setItem('language', lang);
       const menuItems = document.querySelectorAll(".main-nav ul li a");
       const content = translations[lang];
       menuItems.forEach((item, index) => {
