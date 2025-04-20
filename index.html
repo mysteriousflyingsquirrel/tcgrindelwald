@@ -6,6 +6,11 @@
   <title>TC Grindelwald – Home</title>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" href="icons/favicon.png" type="image/png" />
+  <style>
+    .text-section {
+      padding-bottom: 20px; /* Add padding to the bottom */
+    }
+  </style>
 </head>
 <body>
 
@@ -46,8 +51,27 @@
     <!-- === MAIN CONTENT === -->
     <main>
       <div class="container">
-        <h1 id="main-title"></h1>
-        <p id="main-paragraph-1"></p>
+        <div class="text-section">
+            <h1 id="main-title"></h1>
+            <p id="main-paragraph-1"></p>
+        </div>
+        <div class="text-section">
+            <h1 id="reservation-title">Reservierungen</h1>
+            <p id="reservation-paragraph-1">
+                Hier können Sie Ihre Tennisplätze reservieren.<br /><br />
+
+          Pro Stunde CHF 24.00<br /><br />
+
+          Wie bezahle ich, wenn das Clubhaus nicht besetzt ist ...?<br /><br />
+
+          Am besten buchst du deinen Platz online über GotCourts. Die Bezahlung erfolgt bequem per Kreditkarte. Auf GotCourts kannst du zudem jederzeit prüfen, ob am gewünschten Spieltermin noch ein Platz frei ist oder nicht.<br /><br />
+
+          Du kannst den Platz auch direkt auf der Anlage beim Clubhaus buchen. Vor Ort ist ein Tablet mit dem entsprechenden Buchungssystem installiert. Zusätzlich hast du auch die Möglichkeit, die Platzmiete mit Bargeld oder per TWINT zu bezahlen. Bei Barzahlung bitten wir dich, den entsprechenden Geldbetrag in den dafür vorgesehenen Briefumschlag zu legen und den Umschlag in den Briefkasten zu werfen. Der Briefkasten ist beim Clubhaus, rechts neben der Türe und wird regelmässig geleert.<br /><br />
+
+          Wir bitten um FAIRPLAY auch neben dem Tennisplatz.<br /><br />
+
+          Der Tennisclub sagt dir bereits jetzt danke für das Bezahlen der Platzmiete!</p>
+        </div>
       </div>
     </main>
 
@@ -70,16 +94,49 @@
     const translations = {
       de: {
         menu: ["Kalender", "Club", "Anlage", "Kontakt"],
-        title: "WILLKOMMEN",
-        paragraphs: [
-          "Dies ist ein Text."
-        ]
+        welcome: {
+          title: "WILLKOMMEN",
+          paragraph: "...beim schönsten Tennisclub der Welt!"
+        },
+        reservation: {
+          title: "Reservierungen",
+          paragraph: `Hier können Sie Ihre Tennisplätze reservieren.<br /><br />
+
+          Pro Stunde CHF 24.00<br /><br />
+
+          Wie bezahle ich, wenn das Clubhaus nicht besetzt ist ...?<br /><br />
+
+          Am besten buchst du deinen Platz online über GotCourts. Die Bezahlung erfolgt bequem per Kreditkarte. Auf GotCourts kannst du zudem jederzeit prüfen, ob am gewünschten Spieltermin noch ein Platz frei ist oder nicht.<br /><br />
+
+          Du kannst den Platz auch direkt auf der Anlage beim Clubhaus buchen. Vor Ort ist ein Tablet mit dem entsprechenden Buchungssystem installiert. Zusätzlich hast du auch die Möglichkeit, die Platzmiete mit Bargeld oder per TWINT zu bezahlen. Bei Barzahlung bitten wir dich, den entsprechenden Geldbetrag in den dafür vorgesehenen Briefumschlag zu legen und den Umschlag in den Briefkasten zu werfen. Der Briefkasten ist beim Clubhaus, rechts neben der Türe und wird regelmässig geleert.<br /><br />
+
+          Wir bitten um FAIRPLAY auch neben dem Tennisplatz.<br /><br />
+
+          Der Tennisclub sagt dir bereits jetzt danke für das Bezahlen der Platzmiete!`
+        }
       },
       en: {
         menu: ["Calendar", "Club", "Facility", "Contact"],
-        title: "WELCOME",
-        paragraphs: ["This is a text."
-        ]
+        welcome: {
+          title: "WELCOME",
+          paragraph: "...to the most beautiful tennis club in the world!"
+        },
+        reservation: {
+          title: "Reservations",
+          paragraph: `Here you can reserve your tennis courts.<br /><br />
+
+          CHF 24.00 per hour<br /><br />
+
+          How do I pay if the clubhouse is not staffed ...?<br /><br />
+
+          The best way is to book your court online via GotCourts. Payment is conveniently made by credit card. On GotCourts, you can also check at any time whether a court is available at your desired playing time.<br /><br />
+
+          You can also book the court directly at the facility near the clubhouse. On-site, there is a tablet with the corresponding booking system installed. Additionally, you also have the option to pay the court fee in cash or via TWINT. For cash payments, we kindly ask you to place the corresponding amount in the designated envelope and drop the envelope into the mailbox. The mailbox is located at the clubhouse, to the right of the door, and is regularly emptied.<br /><br />
+
+          We kindly ask for FAIR PLAY even off the tennis court.<br /><br />
+
+          The tennis club thanks you in advance for paying the court fee!`
+        }
       }
     };
 
@@ -91,8 +148,10 @@
       menuItems.forEach((item, index) => {
         item.textContent = content.menu[index];
       });
-      document.getElementById("main-title").textContent = content.title;
-      document.getElementById("main-paragraph-1").textContent = content.paragraphs[0];
+      document.getElementById("main-title").textContent = content.welcome.title;
+      document.getElementById("main-paragraph-1").textContent = content.welcome.paragraph;
+      document.getElementById("reservation-title").textContent = content.reservation.title;
+      document.getElementById("reservation-paragraph-1").innerHTML = content.reservation.paragraph;
     }
 
     // Apply saved language or default to DE on page load
