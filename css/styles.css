@@ -300,7 +300,7 @@ footer{
 
 .interclub-image {
   width: 100%; /* Dynamic width */
-  max-width: 600px; /* Maximum width */
+  max-width: 440px; /* Maximum width */
   height: auto;
   border-radius: 10px;
 }
