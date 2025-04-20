@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kalender - TC Grindelwald</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="icons/favicon.png" type="image/png" />
 </head>
 <body>
   <div class="wrapper">
@@ -40,7 +41,11 @@
     <main>
       <div class="container">
         <h1 id="main-title">Kalender</h1>
-        <p id="main-paragraph-1">Hier finden Sie unseren Veranstaltungskalender.</p>
+        <div class="event-list-container">
+          <ul id="event-list">
+            <!-- Events will be dynamically rendered here -->
+          </ul>
+        </div>
       </div>
     </main>
     <footer>
@@ -60,27 +65,204 @@
       de: {
         menu: ["Kalender", "Club", "Anlage", "Kontakt"],
         title: "KALENDER",
-        paragraphs: [
-          "Dies ist ein Text."
-        ]
+        events: [
+          {
+            date: "2025-04-25",
+            title: "Hauptversammlung",
+            description: "Unsere Hauptversammlung im Klubhaus um 20:00 Uhr.",
+            link: null
+          },
+          {
+            date: "2025-04-26",
+            title: "Eröffnung Tennisanlage",
+            description: "Offizielle Eröffnung der Tennissaison (Wetter-/Platzabhängig).",
+            link: null
+          },
+          {
+            date: "2025-05-03",
+            title: "Beginn Interclub",
+            description: "Unsere Teams starten in die Interclub-Saison.",
+            link: null
+          },
+          {
+            date: "2025-05-06",
+            title: "Tennistreff mit Apéro",
+            description: "Gemütlicher Tennistreff mit Apéro im Klubhaus.",
+            link: null
+          },
+          {
+            date: "2025-05-14",
+            title: "Schüler- und Schnuppertennis",
+            description: "Unsere kleinen Roger Federers and Martina Hingis starten in die Saison.",
+            link: null
+          },
+          {
+            date: "2025-05-21",
+            title: "Eltern- und Schülertennis",
+            description: "Gemütliches Tennis für Eltern und Kinder.",
+            link: null
+          },
+
+          {
+            date: "2025-06-07",
+            title: "GHELMA - Pfingstturnier",
+            description: "Öffentliches Turnier vom 07. bis 09. Juni.",
+            link: "https://www.mytennis.ch/de/turniere/152052"
+          },
+          {
+            date: "2025-07-05",
+            title: "Pfingstegg Cup",
+            description: "Öffentliches Turnier vom 05. bis 06. Juli.",
+            link: "https://www.mytennis.ch/de/turniere/152053"
+          },
+
+          {
+            date: "2025-08-04",
+            title: "Start der Clubmeisterschaft im Einzel",
+            description: "Clubinternes Turnier für alle Mitglieder.",
+          },
+
+          {
+            date: "2025-08-15",
+            title: "Jassmeisterschaft TC Grindelwald",
+            description: "Unser alljährliches Jassturnier im Klubhaus.",
+          },
+
+          {
+            date: "2025-08-16",
+            title: "Clubmeisterschaften im Doppel",
+            description: "Clubinternes Turnier für alle Mitglieder.",
+          },
+          {
+            date: "2025-09-13",
+            title: "Halbfinale und Finale der Clubmeisterschaft im Einzel",
+            description: "Clubinternes Turnier für alle Mitglieder.",
+          },
+          {
+            date: "2025-09-17",
+            title: "Schüler Abschlussturnier",
+            description: "Unsere Schüler kämpfen um den Titel.",
+          },
+        ],
+        registerText: "Anmeldung"
       },
       en: {
         menu: ["Calendar", "Club", "Facility", "Contact"],
         title: "CALENDAR",
-        paragraphs: ["This is a text."
-        ]
+        events: [
+          {
+            date: "2025-04-25",
+            title: "General Assembly",
+            description: "Our general assembly at the clubhouse at 8:00 PM.",
+            link: null
+          },
+          {
+            date: "2025-04-26",
+            title: "Opening of Tennis Facility",
+            description: "Official opening of the tennis season (weather/condition dependent).",
+            link: null
+          },
+          {
+            date: "2025-05-03",
+            title: "Start of Interclub",
+            description: "Our teams begin the Interclub season.",
+            link: null
+          },
+          {
+            date: "2025-05-06",
+            title: "Tennis Meetup with Aperitif",
+            description: "Casual tennis meetup with aperitif at the clubhouse.",
+            link: null
+          },
+          {
+            date: "2025-05-14",
+            title: "Student and Trial Tennis",
+            description: "Our young Roger Federers and Martina Hingis start the season.",
+            link: null
+          },
+          {
+            date: "2025-05-21",
+            title: "Parent and Student Tennis",
+            description: "Casual tennis for parents and children.",
+            link: null
+          },
+          {
+            date: "2025-06-07",
+            title: "GHELMA - Pentecost Tournament",
+            description: "Public tournament from June 7 to June 9.",
+            link: "https://www.mytennis.ch/de/turniere/152052"
+          },
+          {
+            date: "2025-07-05",
+            title: "Pfingstegg Cup",
+            description: "Public tournament from July 5 to July 6.",
+            link: "https://www.mytennis.ch/de/turniere/152053"
+          },
+          {
+            date: "2025-08-04",
+            title: "Start of Club Championship Singles",
+            description: "Internal club tournament for all members.",
+            link: null
+          },
+          {
+            date: "2025-08-15",
+            title: "Jass Championship TC Grindelwald",
+            description: "Our annual Jass tournament at the clubhouse.",
+            link: null
+          },
+          {
+            date: "2025-08-16",
+            title: "Club Championship Doubles",
+            description: "Internal club tournament for all members.",
+            link: null
+          },
+          {
+            date: "2025-09-13",
+            title: "Semifinals and Finals of Club Championship Singles",
+            description: "Internal club tournament for all members.",
+            link: null
+          },
+          {
+            date: "2025-09-17",
+            title: "Student Final Tournament",
+            description: "Our students compete for the title.",
+            link: null
+          }
+        ],
+        registerText: "Register"
       }
     };
 
+    function formatDate(dateString, lang) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString(lang, {
+        weekday: "short",
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      });
+    }
+
+    function renderEvents(events, registerText, lang) {
+      const eventList = document.getElementById("event-list");
+      eventList.innerHTML = ""; // Clear existing content
+      events.forEach(event => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `
+          <p>${formatDate(event.date, lang)}</p>
+          <h3>${event.title}</h3>
+          <p>${event.description}</p>
+          ${event.link ? `<a href="${event.link}" target="_blank" class="event-link">${registerText}</a>` : ""}
+        `;
+        eventList.appendChild(listItem);
+      });
+    }
+
     function switchLanguage(lang, event) {
       if (event) event.preventDefault(); // Prevent default link behavior
-      const menuItems = document.querySelectorAll(".main-nav ul li a");
       const content = translations[lang];
-      menuItems.forEach((item, index) => {
-        item.textContent = content.menu[index];
-      });
       document.getElementById("main-title").textContent = content.title;
-      document.getElementById("main-paragraph-1").textContent = content.paragraphs[0];
+      renderEvents(content.events, content.registerText, lang);
     }
 
     // Apply saved language or default to DE on page load

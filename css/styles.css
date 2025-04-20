@@ -123,7 +123,7 @@ main{
   background:var(--peach-bg);
   margin:0 20px;
   flex:1;
-  padding:6rem 10px 2rem;
+  padding:3rem 10px 2rem;
   text-align:left;
 }
 h1{
@@ -176,4 +176,49 @@ footer{
 
 .container{
   padding:10px;
+}
+
+.event-list-container {
+  padding: 0rem; /* Reduced horizontal padding */
+  margin: 0;
+}
+
+.event-list-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.event-list-container li {
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.event-list-container li a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.event-list-container li a:hover {
+  text-decoration: underline;
+}
+
+.event-link {
+  color: var(--green-text);
+  font-weight: bold;
+  text-decoration: none;
+  border: 2px solid var(--green-text);
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-top: 10px; /* Add margin to separate from surrounding text */
+  display: inline-block; /* Ensure proper spacing */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.event-link:hover {
+  background-color: var(--green-text);
+  color: var(--white);
 }
