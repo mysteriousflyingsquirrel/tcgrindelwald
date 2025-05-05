@@ -75,6 +75,14 @@
             <!-- Sponsor list will be dynamically rendered here -->
           </ul>
         </div>
+
+        <div class="text-section">
+          <h1 id="volley-title"></h1>
+          <p id="volley-paragraph" style="margin-bottom: 10px;"></p>
+          <ul id="volley-list" class="no-bullets">
+            <!-- Volley list will be dynamically rendered here -->
+          </ul>
+        </div>
       </div>
     </main>
     <footer>
@@ -172,6 +180,15 @@
               "Jungfraubahnen Management AG",
               "Weinhandlung Ritschard AG"
             ]
+          },
+          volley: {
+            title: "VOLLEY",
+            paragraph: "Unsere Vereinszeitschrift.",
+            list: [
+              "Links",
+              "Links",
+              "Links"
+            ]
           }
         }
       },
@@ -256,6 +273,15 @@
               "Jungfraubahnen Management AG",
               "Weinhandlung Ritschard AG"
             ]
+          },
+          volley: {
+            title: "VOLLEY",
+            paragraph: "Our club magazine.",
+            list: [
+              "Links",
+              "Links",
+              "Links"
+            ]
           }
         }
       }
@@ -320,6 +346,17 @@
         const listItem = document.createElement("li");
         listItem.textContent = sponsor;
         sponsorsList.appendChild(listItem);
+      });
+
+      document.getElementById("volley-title").textContent = content.sections.volley.title;
+      document.getElementById("volley-paragraph").textContent = content.sections.volley.paragraph;
+
+      const volleyList = document.getElementById("volley-list");
+      volleyList.innerHTML = ""; // Clear existing list
+      content.sections.volley.list.forEach((item, index) => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `<a href="assets/volley-${index + 1}.pdf" target="_blank" class="event-link">${item}</a>`;
+        volleyList.appendChild(listItem);
       });
     }
 
