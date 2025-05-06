@@ -80,7 +80,34 @@
           <h1 id="volley-title"></h1>
           <p id="volley-paragraph" style="margin-bottom: 10px;"></p>
           <ul id="volley-list" class="no-bullets">
-            <!-- Volley list will be dynamically rendered here -->
+            <li><a href="assets/volleys/2025-01.pdf" target="_blank">2025-01.pdf</a></li>
+            <li><a href="assets/volleys/2024-02.pdf" target="_blank">2024-02.pdf</a></li>
+            <li><a href="assets/volleys/2024-01.pdf" target="_blank">2024-01.pdf</a></li>
+            <li><a href="assets/volleys/2023-03.pdf" target="_blank">2023-03.pdf</a></li>
+            <li><a href="assets/volleys/2023-02.pdf" target="_blank">2023-02.pdf</a></li>
+            <li><a href="assets/volleys/2023-01.pdf" target="_blank">2023-01.pdf</a></li>
+            <li><a href="assets/volleys/2022-03.pdf" target="_blank">2022-03.pdf</a></li>
+            <li><a href="assets/volleys/2022-02.pdf" target="_blank">2022-02.pdf</a></li>
+            <li><a href="assets/volleys/2022-01.pdf" target="_blank">2022-01.pdf</a></li>
+            <li><a href="assets/volleys/2021-03.pdf" target="_blank">2021-03.pdf</a></li>
+            <li><a href="assets/volleys/2021-02.pdf" target="_blank">2021-02.pdf</a></li>
+            <li><a href="assets/volleys/2021-01.pdf" target="_blank">2021-01.pdf</a></li>
+            <li><a href="assets/volleys/2020-03.pdf" target="_blank">2020-03.pdf</a></li>
+            <li><a href="assets/volleys/2020-01.pdf" target="_blank">2020-01.pdf</a></li>
+            <li><a href="assets/volleys/2019-03.pdf" target="_blank">2019-03.pdf</a></li>
+            <li><a href="assets/volleys/2019-02.pdf" target="_blank">2019-02.pdf</a></li>
+            <li><a href="assets/volleys/2019-01.pdf" target="_blank">2019-01.pdf</a></li>
+            <li><a href="assets/volleys/2018-03.pdf" target="_blank">2018-03.pdf</a></li>
+            <li><a href="assets/volleys/2018-02.pdf" target="_blank">2018-02.pdf</a></li>
+            <li><a href="assets/volleys/2018-01.pdf" target="_blank">2018-01.pdf</a></li>
+            <li><a href="assets/volleys/2017-02.pdf" target="_blank">2017-02.pdf</a></li>
+            <li><a href="assets/volleys/2016-03.pdf" target="_blank">2016-03.pdf</a></li>
+            <li><a href="assets/volleys/2016-02.pdf" target="_blank">2016-02.pdf</a></li>
+            <li><a href="assets/volleys/2016-01.pdf" target="_blank">2016-01.pdf</a></li>
+            <li><a href="assets/volleys/2015-03.pdf" target="_blank">2015-03.pdf</a></li>
+            <li><a href="assets/volleys/2015-02.pdf" target="_blank">2015-02.pdf</a></li>
+            <li><a href="assets/volleys/2014-03.pdf" target="_blank">2014-03.pdf</a></li>
+            <li><a href="assets/volleys/2014-02.pdf" target="_blank">2014-02.pdf</a></li>            
           </ul>
         </div>
       </div>
@@ -183,12 +210,7 @@
           },
           volley: {
             title: "VOLLEY",
-            paragraph: "Unsere Vereinszeitschrift.",
-            list: [
-              "Links",
-              "Links",
-              "Links"
-            ]
+            paragraph: "Unsere Vereinszeitschrift."
           }
         }
       },
@@ -276,12 +298,7 @@
           },
           volley: {
             title: "VOLLEY",
-            paragraph: "Our club magazine.",
-            list: [
-              "Links",
-              "Links",
-              "Links"
-            ]
+            paragraph: "Our club magazine."
           }
         }
       }
@@ -350,14 +367,6 @@
 
       document.getElementById("volley-title").textContent = content.sections.volley.title;
       document.getElementById("volley-paragraph").textContent = content.sections.volley.paragraph;
-
-      const volleyList = document.getElementById("volley-list");
-      volleyList.innerHTML = ""; // Clear existing list
-      content.sections.volley.list.forEach((item, index) => {
-        const listItem = document.createElement("li");
-        listItem.innerHTML = `<a href="assets/volley-${index + 1}.pdf" target="_blank" class="event-link">${item}</a>`;
-        volleyList.appendChild(listItem);
-      });
     }
 
     // Apply saved language or default to DE on page load
