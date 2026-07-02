@@ -7,7 +7,9 @@
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" href="icons/favicon.png" type="image/png" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-gesture-handling@1.2.2/dist/leaflet-gesture-handling.min.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-gesture-handling@1.2.2/dist/leaflet-gesture-handling.min.js"></script>
 </head>
 <body data-page="anlage">
   <div class="wrapper">
@@ -140,6 +142,11 @@
             Tennisclub Grindelwald
           `
         },
+        mapGesture: {
+          touch: "Verschieben der Karte mit zwei Fingern",
+          scroll: "Strg + Scrollen zum Zoomen der Karte",
+          scrollMac: "⌘ + Scrollen zum Zoomen der Karte"
+        },
         title: "STANDORT",
         paragraphs: [
           `Gehen Sie durch das Dorf von Grindelwald bis zur Kirche. Abzweigen nach rechts zur Pfingstegg Bahn. Dort weiter runter ins Tal und über die Brücke. Nach ca. 200 m rechts zum Clubhaus mit Parkplatz. Schon befinden Sie sich bei unserer schönen Tennisanlage...!
@@ -203,6 +210,11 @@
             Tennisclub Grindelwald
           `
         },
+        mapGesture: {
+          touch: "Use two fingers to move the map",
+          scroll: "Use ctrl + scroll to zoom the map",
+          scrollMac: "Use ⌘ + scroll to zoom the map"
+        },
         title: "LOCATION",
         paragraphs: [
           `Walk through the village of Grindelwald to the church. Turn right towards the Pfingstegg railway. Continue down into the valley and cross the bridge. After about 200 m, turn right to the clubhouse with parking. You have arrived at our beautiful tennis facility...!
@@ -213,6 +225,15 @@
         ]
       }
     };
+
+    let map;
+
+    function updateMapGestureText(lang) {
+      if (!map || !map.gestureHandling) return;
+      map.options.gestureHandlingOptions.text = translations[lang].mapGesture;
+      map.gestureHandling.disable();
+      map.gestureHandling.enable();
+    }
 
     function switchLanguage(lang, event) {
       if (event) event.preventDefault(); // Prevent default link behavior
@@ -232,6 +253,7 @@
       document.getElementById("tennis-courts-paragraph").innerHTML = content.tennisCourts.paragraph; // Update Tennisplätze paragraph
       document.getElementById("location-title").textContent = content.title;
       document.getElementById("location-paragraph").innerHTML = content.paragraphs[0]; // Render paragraph dynamically
+      updateMapGestureText(lang);
     }
 
     // Ensure the map is initialized after the DOM is fully loaded
@@ -239,8 +261,13 @@
       const savedLanguage = localStorage.getItem('language') || 'de';
       switchLanguage(savedLanguage);
 
-      // Initialize Leaflet map
-      const map = L.map('map').setView([46.620367933828966, 8.045839020854691], 15);
+      // Initialize Leaflet map with cooperative gesture handling
+      map = L.map('map', {
+        gestureHandling: true,
+        gestureHandlingOptions: {
+          text: translations[savedLanguage].mapGesture
+        }
+      }).setView([46.620367933828966, 8.045839020854691], 15);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
